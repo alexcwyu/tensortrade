@@ -1,0 +1,94 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "tensortrade"
+version = "1.0.4-dev1"
+description = "TensorTrade: A reinforcement learning library for training, evaluating, and deploying robust trading agents."
+readme = "README.md"
+requires-python = ">=3.13"
+license = { text = "Apache-2.0" }
+authors = [
+    { name = "Adam King", email = "adamjking3@gmail.com" },
+    { name = "Matthew Brulhardt", email = "mwbrulhardt@gmail.com" },
+]
+maintainers = [
+    { name = "Carlo Grisetti", email = "carlo.grisetti@gmail.com" },
+]
+keywords = ["tensorflow", "trading", "reinforcement-learning", "algorithmic-trading"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Natural Language :: English",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Education",
+    "Intended Audience :: Science/Research",
+    "Intended Audience :: Financial and Insurance Industry",
+    "Intended Audience :: Information Technology",
+    "License :: OSI Approved :: Apache Software License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Office/Business :: Financial :: Investment",
+    "Topic :: Office/Business :: Financial",
+    "Topic :: Scientific/Engineering :: Information Analysis",
+    "Topic :: System :: Distributed Computing",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Software Development :: Libraries",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+
+dependencies = [
+    "numpy>=2.3.4",
+    "pandas>=2.3.3",
+    "gymnasium>=1.2.2",
+    "pyyaml>=6.0.3",
+    "stochastic>=0.7.0",
+    "tensorflow>=2.20.0",
+    "ipython>=8.31.0",
+    "matplotlib>=3.10.0",
+    "plotly>=5.24.1",
+    "ipywidgets>=8.1.5",
+    "deprecated>=1.2.15",
+]
+
+[project.optional-dependencies]
+test = [
+    "pytest>=8.3.4",
+    "ta>=0.11.0",
+]
+docs = [
+    "sphinx>=8.1.3",
+    "sphinx-rtd-theme>=3.0.2",
+    "sphinxcontrib-apidoc>=0.5.0",
+    "nbsphinx>=0.9.5",
+    "nbsphinx-link>=1.3.0",
+    "recommonmark>=0.7.1",
+    "sphinx-markdown-tables>=0.0.17",
+    "ipykernel>=6.29.5",
+]
+
+[project.urls]
+Homepage = "https://github.com/tensortrade-org/tensortrade"
+Documentation = "https://www.tensortrade.org"
+Repository = "https://github.com/tensortrade-org/tensortrade"
+Issues = "https://github.com/tensortrade-org/tensortrade/issues"
+
+[tool.hatch.build.targets.wheel]
+packages = ["tensortrade"]
+
+[tool.hatch.build.targets.sdist]
+exclude = [
+    "/.github",
+    "/docs",
+    "/tests",
+    "/examples",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.3.4",
+    "ta>=0.11.0",
+    "ruff>=0.8.4",
+    "mypy>=1.13.0",
+]
+
