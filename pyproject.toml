@@ -7,7 +7,7 @@ name = "tensortrade"
 version = "1.0.4-dev1"
 description = "TensorTrade: A reinforcement learning library for training, evaluating, and deploying robust trading agents."
 readme = "README.md"
-requires-python = ">=3.13"
+requires-python = ">=3.13,<3.14"
 license = { text = "Apache-2.0" }
 authors = [
     { name = "Adam King", email = "adamjking3@gmail.com" },
@@ -74,7 +74,7 @@ Repository = "https://github.com/tensortrade-org/tensortrade"
 Issues = "https://github.com/tensortrade-org/tensortrade/issues"
 
 [tool.hatch.build.targets.wheel]
-packages = ["tensortrade"]
+packages = ["src/tensortrade"]
 
 [tool.hatch.build.targets.sdist]
 exclude = [
@@ -84,11 +84,45 @@ exclude = [
     "/examples",
 ]
 
+[tool.uv]
+environments = ["sys_platform == 'linux'", "sys_platform == 'darwin'"]
+
+# stochastic 0.6.0 pins numpy<2.0 but the project needs numpy>=2.3;
+# override to allow resolution (stochastic works fine with numpy 2.x at runtime)
+override-dependencies = ["numpy>=2.3.4"]
+
 [dependency-groups]
 dev = [
     "pytest>=8.3.4",
     "ta>=0.11.0",
     "ruff>=0.8.4",
-    "mypy>=1.13.0",
+    "pyright>=1.1.389",
 ]
+
+[tool.ruff]
+line-length = 88
+target-version = "py313"
+
+[tool.ruff.lint]
+select = ["E", "W", "F", "I", "UP", "B", "SIM", "C4", "RUF", "PERF", "TC", "PTH"]
+ignore = ["E501"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["S101"]
+"__init__.py" = ["F401"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["tensortrade"]
+
+[tool.pyright]
+pythonVersion = "3.13"
+typeCheckingMode = "basic"
+
+[tool.pytest.ini_options]
+minversion = "9.0"
+addopts = ["-ra", "-q", "--strict-markers", "--import-mode=importlib"]
+testpaths = ["tests"]
+pythonpath = ["src"]
+xfail_strict = true
+filterwarnings = ["error"]
 
