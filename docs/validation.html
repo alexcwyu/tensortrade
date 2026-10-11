@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Validation evidence</title><style>
+:root{color-scheme:light dark;--bg:#f6f8fa;--paper:#fff;--fg:#182332;--muted:#526274;--line:#d9e0e7;--accent:#1769aa}
+@media(prefers-color-scheme:dark){:root{--bg:#111820;--paper:#192330;--fg:#e6edf3;--muted:#a0b3c5;--line:#344354;--accent:#71b7ee}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.7 system-ui,-apple-system,sans-serif}
+header{border-bottom:1px solid var(--line);padding:16px max(24px,calc((100vw - 1120px)/2));background:var(--paper);font-size:14px}
+main{max-width:1120px;margin:32px auto;padding:40px 48px;background:var(--paper);border:1px solid var(--line);border-radius:12px}
+h1,h2,h3,h4{line-height:1.3;scroll-margin-top:24px}h1{font-size:2.1rem}h2{margin-top:2.5em;border-bottom:1px solid var(--line);padding-bottom:.35em}h3{margin-top:1.8em}
+a{color:var(--accent);text-underline-offset:3px}code{font:14px/1.6 ui-monospace,SFMono-Regular,Menlo,monospace;background:var(--bg);border-radius:4px;padding:2px 5px}pre{overflow:auto;border:1px solid var(--line);background:var(--bg);padding:16px;border-radius:7px}pre code{padding:0;background:none}
+table{border-collapse:collapse;width:100%;display:block;overflow-x:auto;font-size:14px}th,td{border:1px solid var(--line);padding:9px 12px;text-align:left}th{background:var(--bg)}blockquote{border-left:4px solid var(--accent);margin:16px 0;padding:4px 20px;color:var(--muted)}
+.diagram{overflow-x:auto;margin:24px 0;padding:20px;border:1px solid var(--line);border-radius:8px;background:#fff;color:#182332}.mermaid{border:0;background:none;text-align:center}.mermaid svg{height:auto;max-width:100%}details{font-size:13px;color:#526274}.headerlink{margin-left:.4em;font-size:.7em;text-decoration:none;color:var(--muted)}
+@media(max-width:740px){main{margin:0;padding:24px 18px;border:0;border-radius:0}h1{font-size:1.7rem}.diagram{padding:8px}}
+@media print{header,details,.headerlink{display:none}body,main{background:#fff;color:#000;border:0;margin:0;padding:0}a{color:#000}.diagram,pre{break-inside:avoid}}
+</style></head><body><header>Engineering documentation · <a href="validation.md">Markdown source</a></header><main><h1 id="validation-evidence">Validation evidence<a class="headerlink" href="#validation-evidence" title="Permanent link">&para;</a></h1>
+<p>Recorded 2026-10-12 on macOS arm64. Selected Python: <strong>3.13.16</strong>; uv0.13.0; native Cargo/Rust1.99.0. Commands below ran from the repository root. Exit124 means the documented time bound expired; exit139 means a native segmentation fault. An earlier failed attempt is retained even if a later rerun succeeds.</p>
+<h2 id="current-scope-and-result">Current scope and result<a class="headerlink" href="#current-scope-and-result" title="Permanent link">&para;</a></h2>
+<p>Full existing suite:251passed,2pre-existing skips. Strict warning checks remain enabled. Pandas3, numerical domain operations, EWM gap weighting, and current Ray subprocess cleanup were repaired; all existing value assertions remain.</p>
+<p>Current recorded status: <strong>complete</strong>. Interpreter fallback evidence and native prerequisites are described in <a href="development.md">development</a>. See <a href="ayu-develop.md">architecture</a> for workflows, components, and existing source links.</p>
+<h2 id="executed-commands">Executed commands<a class="headerlink" href="#executed-commands" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Exact command</th>
+<th style="text-align: right;">Exit</th>
+<th style="text-align: right;">Elapsed seconds</th>
+<th>Evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>python315-sync</td>
+<td><code>uv sync --python 3.15 --all-groups --all-extras</code></td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">None</td>
+<td><a href="../../docs/maintenance-2026-10-12/tensortrade-python315-sync.log">tensortrade-python315-sync.log</a></td>
+</tr>
+<tr>
+<td>python315-lock</td>
+<td><code>uv lock --upgrade --python 3.15</code></td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">None</td>
+<td><a href="../../docs/maintenance-2026-10-12/tensortrade-python315-lock.log">tensortrade-python315-lock.log</a></td>
+</tr>
+<tr>
+<td>python314-sync</td>
+<td><code>uv sync --all-groups --all-extras --python 3.14.8</code></td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0.1</td>
+<td><a href="../../docs/maintenance-2026-10-12/tensortrade-python314-sync.log">tensortrade-python314-sync.log</a></td>
+</tr>
+<tr>
+<td>python-sync</td>
+<td><code>uv sync --all-groups --all-extras --python 3.13.16</code></td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">16.65</td>
+<td><a href="../../docs/maintenance-2026-10-12/tensortrade-python-sync.log">tensortrade-python-sync.log</a></td>
+</tr>
+<tr>
+<td>tests</td>
+<td><code>uv run --no-sync pytest</code></td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">10.23</td>
+<td><a href="../../docs/maintenance-2026-10-12/tensortrade-tests.log">tensortrade-tests.log</a></td>
+</tr>
+<tr>
+<td>build</td>
+<td><code>uv build</code></td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">2.4</td>
+<td><a href="../../docs/maintenance-2026-10-12/tensortrade-build.log">tensortrade-build.log</a></td>
+</tr>
+<tr>
+<td>tests-fixed-docstrings</td>
+<td><code>uv run --no-sync pytest</code></td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">34.52</td>
+<td><a href="../../docs/maintenance-2026-10-12/tensortrade-tests-fixed-docstrings.log">tensortrade-tests-fixed-docstrings.log</a></td>
+</tr>
+<tr>
+<td>tests-registered-markers</td>
+<td><code>uv run --no-sync pytest</code></td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">11.37</td>
+<td><a href="../../docs/maintenance-2026-10-12/tensortrade-tests-registered-markers.log">tensortrade-tests-registered-markers.log</a></td>
+</tr>
+<tr>
+<td>python-rllib-sync</td>
+<td><code>uv sync --all-groups --all-extras --python 3.13.16</code></td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1.34</td>
+<td><a href="../../docs/maintenance-2026-10-12/tensortrade-python-rllib-sync.log">tensortrade-python-rllib-sync.log</a></td>
+</tr>
+<tr>
+<td>tests-rllib-deps</td>
+<td><code>uv run --no-sync pytest</code></td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">25.92</td>
+<td><a href="../../docs/maintenance-2026-10-12/tensortrade-tests-rllib-deps.log">tensortrade-tests-rllib-deps.log</a></td>
+</tr>
+<tr>
+<td>python-final-sync</td>
+<td><code>uv sync --all-groups --all-extras --python 3.13.16</code></td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1.98</td>
+<td><a href="../../docs/maintenance-2026-10-12/tensortrade-python-final-sync.log">tensortrade-python-final-sync.log</a></td>
+</tr>
+<tr>
+<td>ewm-reproduction</td>
+<td><code>uv run --no-sync pytest tests/tensortrade/unit/feed/api/float/window/test_ewm.py::test_ewm_mean -x</code></td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">13.85</td>
+<td><a href="../../docs/maintenance-2026-10-12/tensortrade-ewm-reproduction.log">tensortrade-ewm-reproduction.log</a></td>
+</tr>
+<tr>
+<td>tests-current-pandas-ray</td>
+<td><code>uv run --no-sync pytest</code></td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">100.59</td>
+<td><a href="../../docs/maintenance-2026-10-12/tensortrade-tests-current-pandas-ray.log">tensortrade-tests-current-pandas-ray.log</a></td>
+</tr>
+<tr>
+<td>tests-ray-cleanup</td>
+<td><code>uv run --no-sync pytest</code></td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">48.6</td>
+<td><a href="../../docs/maintenance-2026-10-12/tensortrade-tests-ray-cleanup.log">tensortrade-tests-ray-cleanup.log</a></td>
+</tr>
+<tr>
+<td>build-final</td>
+<td><code>uv build</code></td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">3.57</td>
+<td><a href="../../docs/maintenance-2026-10-12/tensortrade-build-final.log">tensortrade-build-final.log</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="test-summaries-and-failures">Test summaries and failures<a class="headerlink" href="#test-summaries-and-failures" title="Permanent link">&para;</a></h2>
+<h3 id="tests">tests<a class="headerlink" href="#tests" title="Permanent link">&para;</a></h3>
+<p>Exit 2; elapsed 10.23seconds.</p>
+<pre><code class="language-text">ERROR tests/tensortrade/unit/env/default/test_observers.py
+ERROR tests/tensortrade/unit/env/default/test_rewards.py
+ERROR tests/tensortrade/unit/env/default/test_stream_selector.py
+ERROR tests/tensortrade/unit/env/test_gpu_compatibility.py
+ERROR tests/tensortrade/unit/stochastic/processes/test_cox.py
+ERROR tests/tensortrade/unit/stochastic/processes/test_fbm.py
+ERROR tests/tensortrade/unit/stochastic/processes/test_gbm.py
+ERROR tests/tensortrade/unit/stochastic/processes/test_heston.py
+ERROR tests/tensortrade/unit/stochastic/processes/test_merton.py
+ERROR tests/tensortrade/unit/stochastic/processes/test_ornstein_uhlenbeck.py
+!!!!!!!!!!!!!!!!!!! Interrupted: 17 errors during collection !!!!!!!!!!!!!!!!!!!
+17 errors in 8.50s
+</code></pre>
+<h3 id="tests-fixed-docstrings">tests-fixed-docstrings<a class="headerlink" href="#tests-fixed-docstrings" title="Permanent link">&para;</a></h3>
+<p>Exit 2; elapsed 34.52seconds.</p>
+<pre><code class="language-text">___ ERROR collecting tests/tensortrade/integration/rllib/test_checkpoint.py ____
+'rllib' not found in `markers` configuration option
+__ ERROR collecting tests/tensortrade/integration/rllib/test_env_creation.py ___
+'rllib' not found in `markers` configuration option
+__ ERROR collecting tests/tensortrade/integration/rllib/test_ray_training.py ___
+'rllib' not found in `markers` configuration option
+=========================== short test summary info ============================
+ERROR tests/tensortrade/integration/rllib/test_checkpoint.py - Failed: 'rllib...
+ERROR tests/tensortrade/integration/rllib/test_env_creation.py - Failed: 'rll...
+ERROR tests/tensortrade/integration/rllib/test_ray_training.py - Failed: 'rll...
+!!!!!!!!!!!!!!!!!!! Interrupted: 3 errors during collection !!!!!!!!!!!!!!!!!!!!
+3 errors in 30.34s
+</code></pre>
+<h3 id="tests-registered-markers">tests-registered-markers<a class="headerlink" href="#tests-registered-markers" title="Permanent link">&para;</a></h3>
+<p>Exit 2; elapsed 11.37seconds.</p>
+<pre><code class="language-text">$ uv run --no-sync pytest
+
+==================================== ERRORS ====================================
+___ ERROR collecting tests/tensortrade/integration/rllib/test_checkpoint.py ____
+'slow' not found in `markers` configuration option
+__ ERROR collecting tests/tensortrade/integration/rllib/test_ray_training.py ___
+'slow' not found in `markers` configuration option
+=========================== short test summary info ============================
+ERROR tests/tensortrade/integration/rllib/test_checkpoint.py - Failed: 'slow'...
+ERROR tests/tensortrade/integration/rllib/test_ray_training.py - Failed: 'slo...
+!!!!!!!!!!!!!!!!!!! Interrupted: 2 errors during collection !!!!!!!!!!!!!!!!!!!!
+2 errors in 8.87s
+</code></pre>
+<h3 id="tests-rllib-deps">tests-rllib-deps<a class="headerlink" href="#tests-rllib-deps" title="Permanent link">&para;</a></h3>
+<p>Exit 1; elapsed 25.92seconds.</p>
+<pre><code class="language-text">ERROR tests/tensortrade/integration/rllib/test_checkpoint.py::TestCheckpoint::test_checkpoint_save_creates_files
+ERROR tests/tensortrade/integration/rllib/test_checkpoint.py::TestCheckpoint::test_checkpoint_restore_loads_algorithm
+ERROR tests/tensortrade/integration/rllib/test_checkpoint.py::TestCheckpoint::test_restored_algo_computes_actions
+ERROR tests/tensortrade/integration/rllib/test_checkpoint.py::TestLSTMCheckpoint::test_lstm_checkpoint_restore
+ERROR tests/tensortrade/integration/rllib/test_env_creation.py::TestRayEnvRegistration::test_env_registration_with_ray
+ERROR tests/tensortrade/integration/rllib/test_env_creation.py::TestRayEnvRegistration::test_registered_env_reset_and_step
+ERROR tests/tensortrade/integration/rllib/test_ray_training.py::TestPPOTraining::test_ppo_single_iteration
+ERROR tests/tensortrade/integration/rllib/test_ray_training.py::TestPPOTraining::test_ppo_with_lstm_model
+ERROR tests/tensortrade/integration/rllib/test_ray_training.py::TestPPOTraining::test_ppo_with_attention_model
+ERROR tests/tensortrade/integration/rllib/test_ray_training.py::TestTunerConfig::test_tuner_config_validation
+FAILED tests/tensortrade/unit/feed/api/float/test_utils.py::test_sqrt - Runti...
+FAILED tests/tensortrade/unit/feed/api/float/test_utils.py::test_log - Runtim...
+FAILED tests/tensortrade/unit/feed/api/float/test_utils.py::test_pct_change
+FAILED tests/tensortrade/unit/feed/api/float/window/test_ewm.py::test_ewm_mean
+FAILED tests/tensortrade/unit/feed/api/float/window/test_expanding.py::test_expanding_var
+FAILED tests/tensortrade/unit/feed/api/float/window/test_expanding.py::test_expanding_std
+FAILED tests/tensortrade/unit/feed/api/float/window/test_rolling.py::test_rolling_var
+FAILED tests/tensortrade/unit/feed/api/float/window/test_rolling.py::test_rolling_std
+FAILED tests/tensortrade/unit/stochastic/processes/test_cox.py::test_shape - ...
+FAILED tests/tensortrade/unit/stochastic/processes/test_fbm.py::test_shape - ...
+FAILED tests/tensortrade/unit/stochastic/processes/test_gbm.py::test_shape - ...
+FAILED tests/tensortrade/unit/stochastic/processes/test_heston.py::test_shape
+FAILED tests/tensortrade/unit/stochastic/processes/test_ornstein_uhlenbeck.py::test_shape
+13 failed, 228 passed, 2 skipped, 10 errors in 22.92s
+</code></pre>
+<h3 id="tests-current-pandas-ray">tests-current-pandas-ray<a class="headerlink" href="#tests-current-pandas-ray" title="Permanent link">&para;</a></h3>
+<p>Exit 1; elapsed 100.59seconds.</p>
+<pre><code class="language-text">ERROR tests/tensortrade/integration/rllib/test_checkpoint.py::TestLSTMCheckpoint::test_lstm_checkpoint_restore
+ERROR tests/tensortrade/integration/rllib/test_env_creation.py::TestRayEnvRegistration::test_registered_env_reset_and_step
+ERROR tests/tensortrade/integration/rllib/test_ray_training.py::TestTunerConfig::test_tuner_config_validation
+251 passed, 2 skipped, 3 errors in 93.68s (0:01:33)
+</code></pre>
+<h3 id="tests-ray-cleanup">tests-ray-cleanup<a class="headerlink" href="#tests-ray-cleanup" title="Permanent link">&para;</a></h3>
+<p>Exit 0; elapsed 48.6seconds.</p>
+<pre><code class="language-text">251 passed, 2 skipped in 46.17s
+</code></pre>
+<h2 id="synchronization">Synchronization<a class="headerlink" href="#synchronization" title="Permanent link">&para;</a></h2>
+<p>All upstream branch and tag refs were fetched by the workspace synchronization procedure. Fork updates use non-forcing pushes; upstream tags also have a private local namespace to preserve divergent tags. The default branch was merged into feature/ayu_develop, preserving the modern package layout and upstream source changes. The workspace synchronization JSON and log retain per-ref outcomes and merge history. This document does not claim that any feature branch was pushed.</p></main>
+<script type="module">
+import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@12.1.0/dist/mermaid.esm.min.mjs';
+mermaid.initialize({startOnLoad:true,securityLevel:'strict',theme:'default',flowchart:{useMaxWidth:true},sequence:{useMaxWidth:true}});
+</script></body></html>

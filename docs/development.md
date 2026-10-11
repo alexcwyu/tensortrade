@@ -556,3 +556,31 @@ Both sides must equal zero (within quantization tolerance). Violations raise exc
 - [Architecture](architecture.md) — System design and components
 - [Workflow](workflow.md) — Event flows and processing pipelines
 - [State Management](state-management.md) — State lifecycle and data models
+
+## Maintained uv environment (2026-10-12)
+
+The tested interpreter selection is Python 3.13.16. uv 0.13.0 resolves runtime dependencies, optional extras, development groups, and build isolation. `uv.lock` records exact versions; `--upgrade` refreshes them within the project and compatibility constraints. Review [validation evidence](validation.md) before treating a build or test command as successful on this host.
+
+TensorFlow 2.21.0 has no compatible Python 3.14 or 3.15 wheel on this host. Python 3.13.16 installs the complete environment, including Ray RLlib and PyTorch used by the existing integration tests.
+
+### Layout and build ownership
+
+Python package src/tensortrade and Hatchling packaging are preserved. uv manages runtime, documentation, and test dependencies. Native TensorFlow wheels remain third-party binary requirements.
+
+Apple Command Line Tools and compiler headers are required when a dependency or extension builds from source.
+
+### Commands from the repository root
+
+```sh
+uv python install 3.13.16
+uv lock --upgrade --python 3.13.16
+uv sync --all-groups --all-extras --python 3.13.16
+uv build
+uv run --no-sync pytest
+```
+
+### External inputs and test scope
+
+TensorFlow and stochastic numerical dependencies constrain available Python versions. Ray RLlib integration tests require its additional environment and training dependencies. Broker adapters remain external integrations. The maintenance retains all existing tests and records missing integrations rather than interpreting collection success as training validation.
+
+Existing upstream skips and xfails remain unchanged. Full suite failures, incomplete runs, and supplemental scoped checks are listed separately in validation. No new test cases were added. The architecture document links existing implementation files and explains the component contracts.

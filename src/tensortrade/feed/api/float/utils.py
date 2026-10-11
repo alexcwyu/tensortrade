@@ -54,7 +54,7 @@ def sqrt(s: "Stream[float]") -> "Stream[float]":
     `Stream[float]`
         The square root stream of `s`.
     """
-    return s.apply(np.sqrt).astype("float")
+    return s.apply(lambda x: np.sqrt(x) if x >= 0 else np.nan).astype("float")
 
 
 @Float.register(["square"])
@@ -88,7 +88,7 @@ def log(s: "Stream[float]") -> "Stream[float]":
     `Stream[float]`
         The log stream of `s`.
     """
-    return s.apply(np.log).astype("float")
+    return s.apply(lambda x: np.log(x) if x > 0 else (-np.inf if x == 0 else np.nan)).astype("float")
 
 
 @Float.register(["pct_change"])

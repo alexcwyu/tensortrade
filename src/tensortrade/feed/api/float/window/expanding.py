@@ -124,7 +124,7 @@ class Expanding(Stream[List[float]]):
         `Stream[float]`
             An expanding variance stream.
         """
-        return self.agg(lambda x: np.var(x, ddof=1)).astype("float")
+        return self.agg(lambda x: np.var(x, ddof=1) if len(x) > 1 else np.nan).astype("float")
 
     def median(self) -> "Stream[float]":
         """Computes an expanding median fo the underlying stream.
@@ -144,7 +144,7 @@ class Expanding(Stream[List[float]]):
         `Stream[float]`
             An expanding standard deviation stream.
         """
-        return self.agg(lambda x: np.std(x, ddof=1)).astype("float")
+        return self.agg(lambda x: np.std(x, ddof=1) if len(x) > 1 else np.nan).astype("float")
 
     def min(self) -> "Stream[float]":
         """Computes an expanding minimum fo the underlying stream.

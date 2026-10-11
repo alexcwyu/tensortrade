@@ -54,6 +54,8 @@ dependencies = [
 [project.optional-dependencies]
 test = [
     "pytest>=8.3.4",
+    "ray[rllib]",
+    "torch",
     "ta>=0.11.0",
 ]
 docs = [
@@ -94,6 +96,8 @@ override-dependencies = ["numpy>=2.3.4"]
 [dependency-groups]
 dev = [
     "pytest>=8.3.4",
+    "ray[rllib]",
+    "torch",
     "ta>=0.11.0",
     "ruff>=0.8.4",
     "pyright>=1.1.389",
@@ -122,6 +126,7 @@ typeCheckingMode = "basic"
 minversion = "9.0"
 addopts = ["-ra", "-q", "--strict-markers", "--import-mode=importlib"]
 testpaths = ["tests"]
+markers = ["rllib: Ray RLlib integration tests", "slow: Long-running integration tests"]
 pythonpath = ["src"]
 xfail_strict = true
 filterwarnings = ["error"]

@@ -75,9 +75,18 @@ def ray_session() -> Generator[None, None, None]:
 
     ray.init(
         num_cpus=2,
-        local_mode=True,
         ignore_reinit_error=True,
         log_to_driver=False,
     )
-    yield
-    ray.shutdown()
+    # Keep subprocess handles alive until shutdown, then close their pipes.
+    # Ray 2.59 drops its reaper stdin without closing it on Python 3.13.
+    node = ray._private.worker._global_node
+    processes = [info.process for group in node.all_processes.values() for info in group]
+    try:
+        yield
+    finally:
+        ray.shutdown()
+        for process in processes:
+            for pipe in (process.stdin, process.stdout, process.stderr):
+                if pipe is not None:
+                    pipe.close()

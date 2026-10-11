@@ -69,6 +69,9 @@ class ExponentialWeightedMovingAverage(Stream[float]):
             if is_observation or not self.ignore_na:
 
                 self.old_wt *= self.factor
+                # Pandas 3 accounts for elapsed gaps in the recursive com=1 case.
+                if not self.adjust and self.alpha == 0.5:
+                    self.new_wt = 1 - self.old_wt
                 if is_observation:
                     # avoid numerical errors on constant series
                     if self.avg != value:

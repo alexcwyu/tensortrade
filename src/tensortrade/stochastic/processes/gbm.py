@@ -123,7 +123,7 @@ def gbm(base_price: int = 1,
     volume_frame.set_index('date')
     volume_frame.index = pd.to_datetime(volume_frame.index, unit='m', origin=start_date)
 
-    data_frame = price_frame['price'].resample(time_frame).ohlc()
-    data_frame['volume'] = volume_frame['volume'].resample(time_frame).sum()
+    data_frame = price_frame['price'].resample(time_frame.replace("d", "D")).ohlc()
+    data_frame['volume'] = volume_frame['volume'].resample(time_frame.replace("d", "D")).sum()
 
     return data_frame

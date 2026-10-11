@@ -36,7 +36,8 @@ def test_sqrt():
     for array in arrays:
         s = Stream.source(array, dtype="float")
         w = s.sqrt().rename("w")
-        expected = list(pd.Series(array).apply(np.sqrt))
+        with np.errstate(invalid="ignore"):
+            expected = list(pd.Series(array).apply(np.sqrt))
 
         assert_op([w], expected)
 
@@ -54,7 +55,8 @@ def test_log():
     for array in arrays:
         s = Stream.source(array, dtype="float")
         w = s.log().rename("w")
-        expected = list(pd.Series(array).apply(np.log))
+        with np.errstate(invalid="ignore"):
+            expected = list(pd.Series(array).apply(np.log))
 
         assert_op([w], expected)
 
@@ -78,7 +80,10 @@ def test_pct_change():
         import warnings
         with warnings.catch_warnings():
             warnings.simplefilter("ignore", FutureWarning)
-            expected = list(pd.Series(array).pct_change(**config))
+            reference = pd.Series(array)
+            if config["fill_method"] is not None:
+                reference = reference.ffill()
+            expected = list(reference.pct_change(periods=config["periods"], fill_method=None))
 
         print(config)
         assert_op([w], expected)

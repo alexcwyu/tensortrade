@@ -183,7 +183,7 @@ class PBR(TensorTradeRewardScheme):
     * Let :math:`R_t` denote the reward at time t.
 
     Then the reward is defined as,
-    :math:`R_{t} = (p_{t} - p_{t-1}) \cdot x_{t}`.
+    :math:`R_{t} = (p_{t} - p_{t-1}) \\cdot x_{t}`.
 
     Parameters
     ----------
