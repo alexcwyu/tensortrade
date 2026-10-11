@@ -12,21 +12,21 @@ Current recorded status: **complete**. Interpreter fallback evidence and native 
 
 | Step | Exact command | Exit | Elapsed seconds | Evidence |
 |---|---|---:|---:|---|
-| python315-sync | `uv sync --python 3.15 --all-groups --all-extras` | 2 | None | [tensortrade-python315-sync.log](../../docs/maintenance-2026-10-12/tensortrade-python315-sync.log) |
-| python315-lock | `uv lock --upgrade --python 3.15` | 0 | None | [tensortrade-python315-lock.log](../../docs/maintenance-2026-10-12/tensortrade-python315-lock.log) |
-| python314-sync | `uv sync --all-groups --all-extras --python 3.14.8` | 2 | 0.1 | [tensortrade-python314-sync.log](../../docs/maintenance-2026-10-12/tensortrade-python314-sync.log) |
-| python-sync | `uv sync --all-groups --all-extras --python 3.13.16` | 0 | 16.65 | [tensortrade-python-sync.log](../../docs/maintenance-2026-10-12/tensortrade-python-sync.log) |
-| tests | `uv run --no-sync pytest` | 2 | 10.23 | [tensortrade-tests.log](../../docs/maintenance-2026-10-12/tensortrade-tests.log) |
-| build | `uv build` | 0 | 2.4 | [tensortrade-build.log](../../docs/maintenance-2026-10-12/tensortrade-build.log) |
-| tests-fixed-docstrings | `uv run --no-sync pytest` | 2 | 34.52 | [tensortrade-tests-fixed-docstrings.log](../../docs/maintenance-2026-10-12/tensortrade-tests-fixed-docstrings.log) |
-| tests-registered-markers | `uv run --no-sync pytest` | 2 | 11.37 | [tensortrade-tests-registered-markers.log](../../docs/maintenance-2026-10-12/tensortrade-tests-registered-markers.log) |
-| python-rllib-sync | `uv sync --all-groups --all-extras --python 3.13.16` | 0 | 1.34 | [tensortrade-python-rllib-sync.log](../../docs/maintenance-2026-10-12/tensortrade-python-rllib-sync.log) |
-| tests-rllib-deps | `uv run --no-sync pytest` | 1 | 25.92 | [tensortrade-tests-rllib-deps.log](../../docs/maintenance-2026-10-12/tensortrade-tests-rllib-deps.log) |
-| python-final-sync | `uv sync --all-groups --all-extras --python 3.13.16` | 0 | 1.98 | [tensortrade-python-final-sync.log](../../docs/maintenance-2026-10-12/tensortrade-python-final-sync.log) |
-| ewm-reproduction | `uv run --no-sync pytest tests/tensortrade/unit/feed/api/float/window/test_ewm.py::test_ewm_mean -x` | 1 | 13.85 | [tensortrade-ewm-reproduction.log](../../docs/maintenance-2026-10-12/tensortrade-ewm-reproduction.log) |
-| tests-current-pandas-ray | `uv run --no-sync pytest` | 1 | 100.59 | [tensortrade-tests-current-pandas-ray.log](../../docs/maintenance-2026-10-12/tensortrade-tests-current-pandas-ray.log) |
-| tests-ray-cleanup | `uv run --no-sync pytest` | 0 | 48.6 | [tensortrade-tests-ray-cleanup.log](../../docs/maintenance-2026-10-12/tensortrade-tests-ray-cleanup.log) |
-| build-final | `uv build` | 0 | 3.57 | [tensortrade-build-final.log](../../docs/maintenance-2026-10-12/tensortrade-build-final.log) |
+| python315-sync | `uv sync --python 3.15 --all-groups --all-extras` | 2 | None | [check record](maintenance/index.html) |
+| python315-lock | `uv lock --upgrade --python 3.15` | 0 | None | [check record](maintenance/index.html) |
+| python314-sync | `uv sync --all-groups --all-extras --python 3.14.8` | 2 | 0.1 | [check record](maintenance/index.html) |
+| python-sync | `uv sync --all-groups --all-extras --python 3.13.16` | 0 | 16.65 | [check record](maintenance/index.html) |
+| tests | `uv run --no-sync pytest` | 2 | 10.23 | [check record](maintenance/index.html) |
+| build | `uv build` | 0 | 2.4 | [check record](maintenance/index.html) |
+| tests-fixed-docstrings | `uv run --no-sync pytest` | 2 | 34.52 | [check record](maintenance/index.html) |
+| tests-registered-markers | `uv run --no-sync pytest` | 2 | 11.37 | [check record](maintenance/index.html) |
+| python-rllib-sync | `uv sync --all-groups --all-extras --python 3.13.16` | 0 | 1.34 | [check record](maintenance/index.html) |
+| tests-rllib-deps | `uv run --no-sync pytest` | 1 | 25.92 | [check record](maintenance/index.html) |
+| python-final-sync | `uv sync --all-groups --all-extras --python 3.13.16` | 0 | 1.98 | [check record](maintenance/index.html) |
+| ewm-reproduction | `uv run --no-sync pytest tests/tensortrade/unit/feed/api/float/window/test_ewm.py::test_ewm_mean -x` | 1 | 13.85 | [check record](maintenance/index.html) |
+| tests-current-pandas-ray | `uv run --no-sync pytest` | 1 | 100.59 | [check record](maintenance/index.html) |
+| tests-ray-cleanup | `uv run --no-sync pytest` | 0 | 48.6 | [check record](maintenance/index.html) |
+| build-final | `uv build` | 0 | 3.57 | [check record](maintenance/index.html) |
 
 ## Test summaries and failures
 

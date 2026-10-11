@@ -1,0 +1,290 @@
+{
+  "repository": "tensortrade",
+  "source_commit_before_documentation_commit": "790daacda743b5fc54e748ad423de682980737e5",
+  "recorded_on": "2026-10-12",
+  "records": [
+    {
+      "command": [
+        "uv",
+        "build"
+      ],
+      "exit_code": 0,
+      "cwd": "<workspace>/tensortrade",
+      "check": "build",
+      "original_log": "tensortrade-build.log",
+      "log_sha256": "2993679d6cbf4b703d2a603fbcf35ef15c46a56d5ec5b33160558f7cb471807b",
+      "outcomes": [
+        "Successfully built dist/tensortrade-1.0.4.dev1.tar.gz",
+        "Successfully built dist/tensortrade-1.0.4.dev1-py3-none-any.whl"
+      ]
+    },
+    {
+      "command": [
+        "uv",
+        "build"
+      ],
+      "exit_code": 0,
+      "cwd": "<workspace>/tensortrade",
+      "check": "build-final",
+      "original_log": "tensortrade-build-final.log",
+      "log_sha256": "2993679d6cbf4b703d2a603fbcf35ef15c46a56d5ec5b33160558f7cb471807b",
+      "outcomes": [
+        "Successfully built dist/tensortrade-1.0.4.dev1.tar.gz",
+        "Successfully built dist/tensortrade-1.0.4.dev1-py3-none-any.whl"
+      ]
+    },
+    {
+      "command": [
+        "uv",
+        "run",
+        "--no-sync",
+        "pytest",
+        "tests/tensortrade/unit/feed/api/float/window/test_ewm.py::test_ewm_mean",
+        "-x"
+      ],
+      "exit_code": 1,
+      "cwd": "<workspace>/tensortrade",
+      "check": "ewm-reproduction",
+      "original_log": "tensortrade-ewm-reproduction.log",
+      "log_sha256": "29f82d296a3677b02dbc475e7ca0b34d54817388010483a21ce5b573aa1101e7",
+      "outcomes": []
+    },
+    {
+      "command": [
+        "uv",
+        "sync",
+        "--all-groups",
+        "--all-extras",
+        "--python",
+        "3.13.16"
+      ],
+      "exit_code": 0,
+      "cwd": "<workspace>/tensortrade",
+      "check": "python-final-sync",
+      "original_log": "tensortrade-python-final-sync.log",
+      "log_sha256": "d1b0d37c5a9f669dea6c89392086ca64f0f376606430720f34e988930577d490",
+      "outcomes": []
+    },
+    {
+      "command": [
+        "uv",
+        "sync",
+        "--all-groups",
+        "--all-extras",
+        "--python",
+        "3.13.16"
+      ],
+      "exit_code": 0,
+      "cwd": "<workspace>/tensortrade",
+      "check": "python-rllib-sync",
+      "original_log": "tensortrade-python-rllib-sync.log",
+      "log_sha256": "57092a5a6fd790de7070c0bdd979fe320cfc37f5b5412d3f036f6915de3f5c78",
+      "outcomes": []
+    },
+    {
+      "command": [
+        "uv",
+        "sync",
+        "--all-groups",
+        "--all-extras",
+        "--python",
+        "3.13.16"
+      ],
+      "exit_code": 0,
+      "cwd": "<workspace>/tensortrade",
+      "check": "python-sync",
+      "original_log": "tensortrade-python-sync.log",
+      "log_sha256": "d66f7b72d13482757d2a5ff5f09b0a4f21b48deadf7007aed63fc8318ed2c315",
+      "outcomes": []
+    },
+    {
+      "command": [
+        "uv",
+        "sync",
+        "--all-groups",
+        "--all-extras",
+        "--python",
+        "3.14.8"
+      ],
+      "exit_code": 2,
+      "cwd": "<workspace>/tensortrade",
+      "check": "python314-sync",
+      "original_log": "tensortrade-python314-sync.log",
+      "log_sha256": "10982d3f9e295dd98516859d2d17c6fec0ced211790920b5401a5f1e106148da",
+      "outcomes": []
+    },
+    {
+      "command": [
+        "uv",
+        "lock",
+        "--upgrade",
+        "--python",
+        "3.15"
+      ],
+      "exit_code": 0,
+      "cwd": "<workspace>/tensortrade",
+      "check": "python315-lock",
+      "original_log": "tensortrade-python315-lock.log",
+      "log_sha256": "97efd312941148f444f4304b3f9d983508f90cbd0481aeb00a6d46ac78e664fa",
+      "outcomes": []
+    },
+    {
+      "command": [
+        "uv",
+        "sync",
+        "--python",
+        "3.15",
+        "--all-groups",
+        "--all-extras"
+      ],
+      "exit_code": 2,
+      "cwd": "<workspace>/tensortrade",
+      "check": "python315-sync",
+      "original_log": "tensortrade-python315-sync.log",
+      "log_sha256": "8882df53b7c0642a0a2e333259fc9d441e51db3800ae00b072e150231301d6bc",
+      "outcomes": []
+    },
+    {
+      "command": [
+        "uv",
+        "run",
+        "--no-sync",
+        "pytest"
+      ],
+      "exit_code": 2,
+      "cwd": "<workspace>/tensortrade",
+      "check": "tests",
+      "original_log": "tensortrade-tests.log",
+      "log_sha256": "3bcff4ef38f85c7f04280e5a4661fc252c71b1c4e5dce064e686d7f7f649279a",
+      "outcomes": []
+    },
+    {
+      "command": [
+        "uv",
+        "run",
+        "--no-sync",
+        "pytest"
+      ],
+      "exit_code": 1,
+      "cwd": "<workspace>/tensortrade",
+      "check": "tests-current-pandas-ray",
+      "original_log": "tensortrade-tests-current-pandas-ray.log",
+      "log_sha256": "c6f43abc1ad27ba151ee5b6bc563c98e5c474e0e418332c07ee09b946308afbb",
+      "outcomes": [
+        "251 passed, 2 skipped, 3 errors in 93.68s (0:01:33)"
+      ]
+    },
+    {
+      "command": [
+        "uv",
+        "run",
+        "--no-sync",
+        "pytest"
+      ],
+      "exit_code": 2,
+      "cwd": "<workspace>/tensortrade",
+      "check": "tests-fixed-docstrings",
+      "original_log": "tensortrade-tests-fixed-docstrings.log",
+      "log_sha256": "ddfc33798e75c4451492bdf50ec43b4095c30490da03e9850294c7a9530f914c",
+      "outcomes": []
+    },
+    {
+      "command": [
+        "uv",
+        "run",
+        "--no-sync",
+        "pytest"
+      ],
+      "exit_code": 0,
+      "cwd": "<workspace>/tensortrade",
+      "check": "tests-ray-cleanup",
+      "original_log": "tensortrade-tests-ray-cleanup.log",
+      "log_sha256": "019e349dadff69467fd3c70244ee06fc09076d28ab3cf88e88e6374d435677d3",
+      "outcomes": [
+        "251 passed, 2 skipped in 46.17s"
+      ]
+    },
+    {
+      "command": [
+        "uv",
+        "run",
+        "--no-sync",
+        "pytest"
+      ],
+      "exit_code": 2,
+      "cwd": "<workspace>/tensortrade",
+      "check": "tests-registered-markers",
+      "original_log": "tensortrade-tests-registered-markers.log",
+      "log_sha256": "f10041ca7ca5e83fcca8e7766bc2f6b9811f7eeb2b491085c5776fecc7566d09",
+      "outcomes": []
+    },
+    {
+      "command": [
+        "uv",
+        "run",
+        "--no-sync",
+        "pytest"
+      ],
+      "exit_code": 1,
+      "cwd": "<workspace>/tensortrade",
+      "check": "tests-rllib-deps",
+      "original_log": "tensortrade-tests-rllib-deps.log",
+      "log_sha256": "e0b806af63fa70d6267ee016441d4ee8a25812ee380ea9fdf97f4f1fd63da406",
+      "outcomes": [
+        "13 failed, 228 passed, 2 skipped, 10 errors in 22.92s"
+      ]
+    }
+  ],
+  "summary": {
+    "repo": "tensortrade",
+    "status": "complete",
+    "branch": "feature/ayu_develop",
+    "head": "790daacda743b5fc54e748ad423de682980737e5",
+    "selected_python": "3.13.16",
+    "uv_version": "0.13.0",
+    "rust_version": null,
+    "build": {
+      "repo": "tensortrade",
+      "step": "build-final",
+      "command": [
+        "uv",
+        "build"
+      ],
+      "cwd": "<workspace>/tensortrade",
+      "started": 1791736852.4381492,
+      "log": "<workspace>/docs/maintenance-2026-10-12/tensortrade-build-final.log",
+      "exit_code": 0,
+      "elapsed_seconds": 3.57
+    },
+    "full_tests": {
+      "repo": "tensortrade",
+      "step": "tests-ray-cleanup",
+      "command": [
+        "uv",
+        "run",
+        "--no-sync",
+        "pytest"
+      ],
+      "cwd": "<workspace>/tensortrade",
+      "started": 1791736588.348639,
+      "log": "<workspace>/docs/maintenance-2026-10-12/tensortrade-tests-ray-cleanup.log",
+      "exit_code": 0,
+      "elapsed_seconds": 48.6
+    },
+    "summary": "Full existing suite:251passed,2pre-existing skips. Strict warning checks remain enabled. Pandas3, numerical domain operations, EWM gap weighting, and current Ray subprocess cleanup were repaired; all existing value assertions remain.",
+    "documentation": [
+      "docs/ayu-develop.md",
+      "docs/ayu-develop.html",
+      "docs/development.md",
+      "docs/development.html",
+      "docs/validation.md",
+      "docs/validation.html"
+    ],
+    "source_links": 13,
+    "diagram_count": 6,
+    "sync_evidence": "<workspace>/docs/maintenance-2026-10-12/tensortrade-sync.json",
+    "feature_pushed": false,
+    "commit": "790daacda743b5fc54e748ad423de682980737e5"
+  },
+  "note": "Full raw logs are retained in the workspace maintenance evidence, not distributed here. Hashes identify those original logs. A successful build or selected test subset does not imply a full test-suite pass. Commands containing <workspace> describe the original execution environment."
+}
