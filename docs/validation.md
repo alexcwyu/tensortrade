@@ -1,5 +1,11 @@
 # Validation evidence
 
+<!-- current-documentation-provenance -->
+Documentation reviewed: 2026-10-13 · Git source base: `5adbd3f54c35c183bcf42ed230c9c7f74847b451` · [Current architecture and feature guide](ayu-develop.md).
+Historical execution commands/results below retain their original dates and scope; this metadata update is not a new application test run.
+<!-- /current-documentation-provenance -->
+
+
 Recorded 2026-10-12 on macOS arm64. Selected Python: **3.13.16**; uv0.13.0; native Cargo/Rust1.99.0. Commands below ran from the repository root. Exit124 means the documented time bound expired; exit139 means a native segmentation fault. An earlier failed attempt is retained even if a later rerun succeeds.
 
 ## Current scope and result

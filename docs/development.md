@@ -1,5 +1,11 @@
 # TensorTrade -- Development Guide
 
+<!-- current-documentation-provenance -->
+Documentation reviewed: 2026-10-13 · Git source base: `5adbd3f54c35c183bcf42ed230c9c7f74847b451` · [Current architecture and feature guide](ayu-develop.md).
+Historical execution commands/results below retain their original dates and scope; this metadata update is not a new application test run.
+<!-- /current-documentation-provenance -->
+
+
 ## Setting Up the Development Environment
 
 ### Prerequisites
